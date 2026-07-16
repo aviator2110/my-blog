@@ -1,6 +1,7 @@
 import LikeArticleButton from "@/components/LikeArticleButton";
 import { articles } from "@/data/articles";
 import Image from "next/image";
+import Link from "next/link";
 
 export const revalidate = 30;
 
@@ -14,7 +15,7 @@ export default function Home() {
         <h1 className="mb-10 text-center text-4xl font-bold text-zinc-900 dark:text-white">
           Блог про CS2
         </h1>
-
+        
         <div className="space-y-8">
           {articles.map((article) => (
             <article
@@ -43,9 +44,12 @@ export default function Home() {
                 </p>
 
                 <div className="mt-6 flex items-center justify-between">
-                  <button className="rounded-lg bg-blue-600 px-5 py-2 font-medium text-white transition hover:bg-blue-700">
+                  <Link
+                    href={`/blog/${article.id}`}
+                    className="rounded-lg bg-blue-600 px-5 py-2 font-medium text-white transition hover:bg-blue-700"
+                  >
                     Читать далее
-                  </button>
+                  </Link>
 
                   <LikeArticleButton />
                 </div>
