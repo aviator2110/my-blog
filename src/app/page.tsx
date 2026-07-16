@@ -1,3 +1,4 @@
+import LikeArticleButton from "@/components/LikeArticleButton";
 import { articles } from "@/data/articles";
 import Image from "next/image";
 
@@ -36,9 +37,13 @@ export default function Home() {
                   {article.description}
                 </p>
 
-                <button className="mt-6 rounded-lg bg-blue-600 px-5 py-2 text-white transition hover:bg-blue-700">
-                  Читать далее
-                </button>
+                <div className="mt-6 flex items-center justify-between">
+                  <button className="rounded-lg bg-blue-600 px-5 py-2 font-medium text-white transition hover:bg-blue-700">
+                    Читать далее
+                  </button>
+
+                  <LikeArticleButton />
+                </div>
               </div>
             </article>
           ))}
