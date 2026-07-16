@@ -1,37 +1,48 @@
+import { articles } from "@/data/articles";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 dark:bg-black">
-      <main className="flex flex-col w-full max-w-3xl p-8 gap-8">
-        <h1>Блог про CS2</h1>
+    <div className="min-h-screen bg-zinc-100 dark:bg-zinc-900 py-10">
+      <main className="mx-auto max-w-4xl px-6">
+        <h1 className="mb-10 text-center text-4xl font-bold text-zinc-900 dark:text-white">
+          Блог про CS2
+        </h1>
 
-        <article>
-          <h2>Лучшие настройки CS2 в 2026 году</h2>
-          <p>Дата: 9 июля 2026</p>
-          <p>
-            В этой статье рассмотрим оптимальные настройки графики,
-            чувствительности мыши и прицела для комфортной игры и высокого FPS.
-          </p>
-        </article>
+        <div className="space-y-8">
+          {articles.map((article) => (
+            <article
+              key={article.id}
+              className="overflow-hidden rounded-2xl bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl dark:bg-zinc-800"
+            >
+              <Image
+                src={article.image}
+                alt={article.alt}
+                width={800}
+                height={400}
+                className="h-64 w-full object-cover"
+              />
 
-        <article>
-          <h2>Как быстрее поднять рейтинг в Premier</h2>
-          <p>Дата: 7 июля 2026</p>
-          <p>
-            Разберём самые распространённые ошибки игроков, способы улучшить
-            коммуникацию с командой и советы для стабильного роста рейтинга.
-          </p>
-        </article>
+              <div className="p-6">
+                <h2 className="mb-2 text-2xl font-semibold text-zinc-900 dark:text-white">
+                  {article.title}
+                </h2>
 
-        <article>
-          <h2>Топ-5 карт, которые должен знать каждый игрок</h2>
-          <p>Дата: 4 июля 2026</p>
-          <p>
-            Краткий обзор Mirage, Inferno, Dust II, Nuke и Ancient с полезными
-            советами по позициям и игре за обе стороны.
-          </p>
-        </article>
+                <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
+                  📅 {article.date}
+                </p>
+
+                <p className="leading-7 text-zinc-700 dark:text-zinc-300">
+                  {article.description}
+                </p>
+
+                <button className="mt-6 rounded-lg bg-blue-600 px-5 py-2 text-white transition hover:bg-blue-700">
+                  Читать далее
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
       </main>
     </div>
   );
