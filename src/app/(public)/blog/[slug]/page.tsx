@@ -1,7 +1,9 @@
+import RelatedArticles from "@/components/RelatedArticles";
 import { articles } from "@/data/articles";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 export default async function ArticlePage({
   params,
@@ -58,6 +60,15 @@ export default async function ArticlePage({
           ))}
         </div>
       </div>
+      <Suspense
+        fallback={
+          <div className="mx-auto w-[95%] space-y-4 mt-12 rounded-lg border p-6 text-center">
+            Загрузка похожих статей...
+          </div>
+        }
+      >
+        <RelatedArticles currentId={article.id} tags={article.tags} />
+      </Suspense>
     </article>
   );
 }
