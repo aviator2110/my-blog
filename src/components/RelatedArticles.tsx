@@ -7,7 +7,7 @@ type Props = {
 };
 
 export default async function RelatedArticles({ currentId, tags }: Props) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 5000));
 
   const related = articles.filter(
     (article) =>
