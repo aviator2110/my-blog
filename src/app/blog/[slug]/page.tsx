@@ -1,5 +1,6 @@
 import { articles } from "@/data/articles";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default async function ArticlePage({
@@ -44,6 +45,17 @@ export default async function ArticlePage({
                 {paragraph}
               </p>
             ))}
+        </div>
+        <div className="mb-6 flex flex-wrap gap-2">
+          {article.tags.map((tag) => (
+            <Link
+              key={tag}
+              href={`/blog/tags/${tag}`}
+              className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-700 hover:bg-blue-200"
+            >
+              #{tag}
+            </Link>
+          ))}
         </div>
       </div>
     </article>

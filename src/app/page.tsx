@@ -39,10 +39,21 @@ export default function Home() {
                   📅 {article.date}
                 </p>
 
-                <p className="leading-7 text-zinc-700 dark:text-zinc-300">
+                <p className="mb-4 leading-7 text-zinc-700 dark:text-zinc-300">
                   {article.description}
                 </p>
 
+                <div className="flex flex-wrap gap-2">
+                  {article.tags.map((tag) => (
+                    <Link
+                      key={tag}
+                      href={`/blog/tags/${tag}`}
+                      className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-700 hover:bg-blue-200"
+                    >
+                      #{tag}
+                    </Link>
+                  ))}
+                </div>
                 <div className="mt-6 flex items-center justify-between">
                   <Link
                     href={`/blog/${article.id}`}
@@ -52,16 +63,6 @@ export default function Home() {
                   </Link>
 
                   <LikeArticleButton />
-                </div>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {article.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
                 </div>
               </div>
             </article>
