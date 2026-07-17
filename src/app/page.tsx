@@ -15,7 +15,7 @@ export default function Home() {
         <h1 className="mb-10 text-center text-4xl font-bold text-zinc-900 dark:text-white">
           Блог про CS2
         </h1>
-        
+
         <div className="space-y-8">
           {articles.map((article) => (
             <article
@@ -52,6 +52,16 @@ export default function Home() {
                   </Link>
 
                   <LikeArticleButton />
+                </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {article.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </article>
