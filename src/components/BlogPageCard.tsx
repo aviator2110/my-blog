@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import TagBadge from "./TagBadge";
 
 type Article = {
@@ -19,44 +18,47 @@ type BlogPageCardProps = {
 
 const BlogPageCard = ({ article }: BlogPageCardProps) => {
   return (
-    <article className="overflow-hidden rounded-2xl bg-white shadow-xl dark:bg-zinc-800">
-        <Image
-          src={article.image}
-          alt={article.alt}
-          width={1200}
-          height={500}
-          className="h-96 w-full object-cover"
-        />
+    <article
+      className="overflow-hidden rounded-2xl bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl
+                dark:bg-zinc-800 dark:shadow-black/30"
+    >
+      <Image
+        src={article.image}
+        alt={article.alt}
+        width={1200}
+        height={500}
+        className="h-96 w-full object-cover"
+      />
 
-        <div className="p-8">
-          <p className="mb-3 text-sm text-zinc-500">📅 {article.date}</p>
+      <div className="p-8">
+        <p className="mb-3 text-sm text-zinc-500">📅 {article.date}</p>
 
-          <h1 className="mb-6 text-4xl font-bold">{article.title}</h1>
+        <h1 className="mb-6 text-4xl font-bold">{article.title}</h1>
 
-          <div className="space-y-5 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
-            <p>{article.description}</p>
+        <div className="space-y-5 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
+          <p>{article.description}</p>
 
-            {article.text
-              .trim()
-              .split("\n\n")
-              .map((paragraph, index) => (
-                <p
-                  key={index}
-                  className="mb-4 leading-8 text-zinc-700 dark:text-zinc-300"
-                >
-                  {paragraph}
-                </p>
-              ))}
-          </div>
-
-          <div className="mb-6 flex flex-wrap gap-2">
-            {article.tags.map((tag) => (
-              <TagBadge tag={tag} key={tag} />
+          {article.text
+            .trim()
+            .split("\n\n")
+            .map((paragraph, index) => (
+              <p
+                key={index}
+                className="mb-4 leading-8 text-zinc-700 dark:text-zinc-300"
+              >
+                {paragraph}
+              </p>
             ))}
-          </div>
         </div>
-      </article>
-  )
-}
 
-export default BlogPageCard
+        <div className="mb-6 flex flex-wrap gap-2">
+          {article.tags.map((tag) => (
+            <TagBadge tag={tag} key={tag} />
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+};
+
+export default BlogPageCard;
