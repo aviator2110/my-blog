@@ -16,7 +16,7 @@ export default function Home() {
 
         <div className="space-y-8">
           {articles.map((article) => (
-            <BlogCard article={article} />
+            <BlogCard key={article.id} article={article} />
           ))}
         </div>
       </main>
