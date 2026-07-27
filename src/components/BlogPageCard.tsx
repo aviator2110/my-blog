@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import TagBadge from "./TagBadge";
 
 type Article = {
   id: string;
@@ -12,11 +13,11 @@ type Article = {
   text: string;
 };
 
-type BlogCardProps = {
+type BlogPageCardProps = {
   article: Article;
 };
 
-const BlogPageCard = ({ article }: BlogCardProps) => {
+const BlogPageCard = ({ article }: BlogPageCardProps) => {
   return (
     <article className="overflow-hidden rounded-2xl bg-white shadow-xl dark:bg-zinc-800">
         <Image
@@ -50,13 +51,7 @@ const BlogPageCard = ({ article }: BlogCardProps) => {
 
           <div className="mb-6 flex flex-wrap gap-2">
             {article.tags.map((tag) => (
-              <Link
-                key={tag}
-                href={`/blog/tags/${tag}`}
-                className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-700 hover:bg-blue-200"
-              >
-                #{tag}
-              </Link>
+              <TagBadge tag={tag} key={tag} />
             ))}
           </div>
         </div>

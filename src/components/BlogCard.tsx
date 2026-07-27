@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import LikeArticleButton from "./LikeArticleButton";
+import TagBadge from "./TagBadge";
 
 type Article = {
   id: string;
@@ -46,13 +47,7 @@ const BlogCard = ({ article }: BlogCardProps) => {
 
         <div className="flex flex-wrap gap-2">
           {article.tags.map((tag) => (
-            <Link
-              key={tag}
-              href={`/blog/tags/${tag}`}
-              className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-700 hover:bg-blue-200"
-            >
-              #{tag}
-            </Link>
+            <TagBadge tag={tag} key={tag} />
           ))}
         </div>
         <div className="mt-6 flex items-center justify-between">
